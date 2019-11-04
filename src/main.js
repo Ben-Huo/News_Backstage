@@ -15,7 +15,19 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 //注册组件库
 Vue.use(ElementUI);
-
+// 路由守卫
+router.beforeEach((to,from,next)=>{
+    if(to.path != '/login'){
+      const token = localStorage.getItem('token');
+      if(!token){
+        router.push('/login');
+      }else{
+        next();
+      }
+    }else{
+      next();
+    }
+})
 
 Vue.config.productionTip = false
 
