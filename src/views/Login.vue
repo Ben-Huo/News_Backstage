@@ -45,6 +45,8 @@ export default {
           localStorage.setItem("user", JSON.stringify(res.data.data.user));
           this.$message.success('登陆成功');
           this.$router.push('/');
+        }else{
+            this.$message.error(res.data.message);
         }
       });
     }
